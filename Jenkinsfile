@@ -20,7 +20,7 @@ pipeline {
                 }
             }
         }
-        stage('Unit Tests and Static Analysis') {
+        stage('Tests') {
             failFast true
             parallel {
                 stage('Unit Tests') {
