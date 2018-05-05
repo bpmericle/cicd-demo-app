@@ -78,7 +78,6 @@ pipeline {
                 }
             }
         }
-/*
         stage('Publish to Artifact Repository') {
             steps {
                 executePublishToArtifactRepositoryStageSteps()
@@ -92,7 +91,6 @@ pipeline {
                 }
             }
         }
-*/
         stage('Deploy to Pre-Production') {
             steps {
                 executeDeployToPreProductionStageSteps()
