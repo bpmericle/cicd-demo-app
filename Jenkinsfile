@@ -78,16 +78,29 @@ pipeline {
                 }
             }
         }
-        stage('Publish to Artifact Repository') {
+        stage('Publish Artifact') {
             steps {
-                executePublishToArtifactRepositoryStageSteps()
+                executePublishArtifactToArtifactRepositoryStageSteps()
             }
             post {
                 success {
-                    executePublishToArtifactRepositoryStagePostSuccessSteps()
+                    executePublishArtifactToArtifactRepositoryStagePostSuccessSteps()
                 }
                 failure {
-                    executePublishToArtifactRepositoryStagePostFailureSteps()
+                    executePublishArtifactToArtifactRepositoryStagePostFailureSteps()
+                }
+            }
+        }
+        stage('Publish Image') {
+            steps {
+                executePublishImageToArtifactRepositoryStageSteps()
+            }
+            post {
+                success {
+                    executePublishImageToArtifactRepositoryStagePostSuccessSteps()
+                }
+                failure {
+                    executePublishImageToArtifactRepositoryStagePostFailureSteps()
                 }
             }
         }
