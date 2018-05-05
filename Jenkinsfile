@@ -2,7 +2,7 @@
 @Library(['cicd-pipeline-lib']) _
 
 pipeline {
-    agent 'any'
+    agent any
     options {
         timestamps()
     }
@@ -61,6 +61,20 @@ pipeline {
                 }
                 failure {
                     executeStaticAnalysisStagePostFailureSteps()
+                }
+            }
+        }
+        stage('Static Analysis Quality Gate') {
+            agent none
+            steps {
+                executeStaticAnalysisQualityGateStageSteps()
+            }
+            post {
+                success {
+                    executeStaticAnalysisQualityGateStagePostSuccessSteps()
+                }
+                failure {
+                    executeStaticAnalysisQualityGateStagePostFailureSteps()
                 }
             }
         }
