@@ -55,7 +55,7 @@
         <dependency.locations.enabled>false</dependency.locations.enabled>
         
         <!-- Sonar -->
-        <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</sonar.jacoco.itReportPath>
+        <sonar.jacoco.reportPaths>${project.build.directory}/jacoco-it.exec</sonar.jacoco.reportPaths>
         <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
         
         <artifact.repo.protocol>http</artifact.repo.protocol>
