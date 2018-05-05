@@ -24,6 +24,8 @@
                 <skipTestCompile>true</skipTestCompile>
                 
                 <skip.failsafe.tests>true</skip.failsafe.tests>
+                
+                <maven.javadoc.skip>true</maven.javadoc.skip>
             </properties>
         </action>
         <action>
@@ -38,6 +40,10 @@
                 <skipTestCompile>true</skipTestCompile>
                 
                 <skip.surefire.tests>true</skip.surefire.tests>
+                
+                <aven.javadoc.skip>true</aven.javadoc.skip>
+                
+                <dockerfile.skip>true</dockerfile.skip>
             </properties>
         </action>
         <action>
@@ -45,17 +51,33 @@
             <displayName>sonar-only</displayName>
             <goals>
                 <goal>-e</goal>
-                <goal>verify</goal>
                 <goal>sonar:sonar</goal>
+                
             </goals>
             <properties>
                 <sonar.host.url>http://localhost:9000</sonar.host.url>
                 <sonar.login>5adaa496e8a5c753d1afcb30376e9e32bfa61da2</sonar.login>
+                
+                
+                
+                
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-deploy-only</actionName>
+            <displayName>deploy-only</displayName>
+            <goals>
+                <goal>deploy</goal>
+            </goals>
+            <properties>
                 <jacoco.skip>true</jacoco.skip>
                 <skipSourceCompile>true</skipSourceCompile>
                 <skipTestCompile>true</skipTestCompile>
-                <skip.failsafe.tests>true</skip.failsafe.tests>
                 <skip.surefire.tests>true</skip.surefire.tests>
+                <skip.failsafe.tests>true</skip.failsafe.tests>
+                <dockerfile.username>admin</dockerfile.username>
+                <dockerfile.password>admin123</dockerfile.password>
             </properties>
         </action>
     </actions>

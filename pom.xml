@@ -56,7 +56,6 @@
         
         <!-- Sonar -->
         <sonar.jacoco.itReportPath>${project.build.directory}/jacoco-it.exec</sonar.jacoco.itReportPath>
-        <sonar.groovy.binaries>${project.build.outputDirectory}</sonar.groovy.binaries>
         <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
         
         <artifact.repo.protocol>http</artifact.repo.protocol>
@@ -242,18 +241,25 @@
                 <version>1.4.0</version>
                 <executions>
                     <execution>
-                        <id>default</id>
+                        <id>build</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>push</id>
+                        <phase>deploy</phase>
+                        <goals>
                             <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>${artifact.repo.host}:${artifact.repo.port}/${docker.image.prefix}/${project.artifactId}</repository>
+                    <repository>localhost:18444/${docker.image.prefix}/${project.artifactId}</repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
-                        <JAR_FILE>${project.build.outputDirectory}/${project.build.finalName}.jar</JAR_FILE>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
             </plugin-->

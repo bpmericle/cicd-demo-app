@@ -1,5 +1,6 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
+FROM openjdk:8-jre-alpine
 ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+COPY ./target/${JAR_FILE} /usr/src/staging/app.jar
+WORKDIR /usr/src/staging/
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
