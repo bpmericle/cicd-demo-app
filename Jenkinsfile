@@ -78,29 +78,34 @@ pipeline {
                 }
             }
         }
-        stage('Publish Artifact') {
-            steps {
-                executePublishArtifactToArtifactRepositoryStageSteps()
-            }
-            post {
-                success {
-                    executePublishArtifactToArtifactRepositoryStagePostSuccessSteps()
+        stage('Publish') {
+            failFast true
+            parallel {
+                stage('Publish Artifact') {
+                    steps {
+                        executePublishArtifactToArtifactRepositoryStageSteps()
+                    }
+                    post {
+                        success {
+                            executePublishArtifactToArtifactRepositoryStagePostSuccessSteps()
+                        }
+                        failure {
+                            executePublishArtifactToArtifactRepositoryStagePostFailureSteps()
+                        }
+                    }
                 }
-                failure {
-                    executePublishArtifactToArtifactRepositoryStagePostFailureSteps()
-                }
-            }
-        }
-        stage('Publish Image') {
-            steps {
-                executePublishImageToArtifactRepositoryStageSteps()
-            }
-            post {
-                success {
-                    executePublishImageToArtifactRepositoryStagePostSuccessSteps()
-                }
-                failure {
-                    executePublishImageToArtifactRepositoryStagePostFailureSteps()
+                stage('Publish Image') {
+                    steps {
+                        executePublishImageToArtifactRepositoryStageSteps()
+                    }
+                    post {
+                        success {
+                            executePublishImageToArtifactRepositoryStagePostSuccessSteps()
+                        }
+                        failure {
+                            executePublishImageToArtifactRepositoryStagePostFailureSteps()
+                        }
+                    }
                 }
             }
         }
