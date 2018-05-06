@@ -347,7 +347,7 @@
         </repository>
         
         <snapshotRepository>
-            <uniqueVersion>true</uniqueVersion>
+            <uniqueVersion>false</uniqueVersion>
             <id>nexus</id>
             <name>Crosslake Snapshots</name>
             <url>${artifact.repo.protocol}://${artifact.repo.host}:${artifact.repo.port}/repository/crosslake-snapshots/</url>
