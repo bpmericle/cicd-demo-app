@@ -52,7 +52,6 @@ pipeline {
             }
         }
         stage('Static Analysis') {
-            agent none
             steps {
                 executeStaticAnalysisStageSteps()
             }
@@ -65,7 +64,6 @@ pipeline {
                 }
             }
         }
-/*
         stage('Static Analysis Quality Gate') {
             agent none
             steps {
@@ -80,7 +78,6 @@ pipeline {
                 }
             }
         }
-*/
         stage('Publish') {
             failFast true
             parallel {
