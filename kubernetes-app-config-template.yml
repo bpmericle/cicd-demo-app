@@ -28,7 +28,7 @@ spec:
   type: LoadBalancer
   ports:
   - name: http
-    port: 8611
+    port: @@EXTERNAL_PORT@@
     targetPort: 8090
   selector:
     app: @@ARTIFACT_ID@@
