@@ -20,34 +20,29 @@ pipeline {
                 }
             }
         }
-        stage('Tests') {
-            failFast true
-            parallel {
-                stage('Unit Tests') {
-                    steps {
-                        executeUnitTestsStageSteps()
-                    }
-                    post {
-                        success {
-                            executeUnitTestsStagePostSuccessSteps()
-                        }
-                        failure {
-                            executeUnitTestsStagePostFailureSteps()
-                        }
-                    }
+        stage('Unit Tests') {
+            steps {
+                executeUnitTestsStageSteps()
+            }
+            post {
+                success {
+                    executeUnitTestsStagePostSuccessSteps()
                 }
-                stage('Integration Tests') {
-                    steps {
-                        executeIntegrationTestsStageSteps()
-                    }
-                    post {
-                        success {
-                            executeIntegrationTestsStagePostSuccessSteps()
-                        }
-                        failure {
-                            executeIntegrationTestsStagePostFailureSteps()
-                        }
-                    }
+                failure {
+                    executeUnitTestsStagePostFailureSteps()
+                }
+            }
+        }
+        stage('Integration Tests') {
+            steps {
+                executeIntegrationTestsStageSteps()
+            }
+            post {
+                success {
+                    executeIntegrationTestsStagePostSuccessSteps()
+                }
+                failure {
+                    executeIntegrationTestsStagePostFailureSteps()
                 }
             }
         }
