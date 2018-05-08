@@ -33,19 +33,6 @@ pipeline {
                 }
             }
         }
-        stage('Integration Tests') {
-            steps {
-                executeIntegrationTestsStageSteps()
-            }
-            post {
-                success {
-                    executeIntegrationTestsStagePostSuccessSteps()
-                }
-                failure {
-                    executeIntegrationTestsStagePostFailureSteps()
-                }
-            }
-        }
         stage('Static Analysis') {
             steps {
                 executeStaticAnalysisStageSteps()
@@ -70,6 +57,19 @@ pipeline {
                 }
                 failure {
                     executeStaticAnalysisQualityGateStagePostFailureSteps()
+                }
+            }
+        }
+        stage('Integration Tests') {
+            steps {
+                executeIntegrationTestsStageSteps()
+            }
+            post {
+                success {
+                    executeIntegrationTestsStagePostSuccessSteps()
+                }
+                failure {
+                    executeIntegrationTestsStagePostFailureSteps()
                 }
             }
         }
