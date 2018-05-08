@@ -117,6 +117,11 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Production?') {
+            steps {
+                input(message: 'Deploy to production?', ok: 'Yes')
+            }
+        }
         stage('Deploy to Production') {
             steps {
                 executeDeployToProductionStageSteps()
