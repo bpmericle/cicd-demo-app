@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.1.RELEASE</version>
+        <version>2.0.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -18,7 +18,7 @@
     <name>cicd-demo-app</name>
     <description>Demo project for Spring Boot</description>
     <url>https://github.com/bpmericle/cicd-demo-app</url>
-   
+
     <licenses>
         <license>
             <name>The MIT License</name>
@@ -35,7 +35,7 @@
             <id>bpmericle</id>
         </developer>
     </developers>
-   
+
     <issueManagement>
         <system>GitHub Issues</system>
         <url>https://github.com/bpmericle/cicd-demo-app/issues</url>
@@ -53,20 +53,20 @@
         <log4j2.version>2.9.1</log4j2.version>
         <jacoco.version>0.8.1</jacoco.version>
         <dependency.locations.enabled>false</dependency.locations.enabled>
-        
+
         <jacoco.dataFile>${project.build.directory}/jacoco.exec</jacoco.dataFile>
-        
+
         <!-- Sonar -->
         <sonar.jacoco.reportPaths>${jacoco.dataFile}</sonar.jacoco.reportPaths>
         <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
-        
+
         <artifact.repo.protocol>http</artifact.repo.protocol>
         <artifact.repo.host>localhost</artifact.repo.host>
         <artifact.repo.port>8081</artifact.repo.port>
-        
+
         <skipSourceCompile>false</skipSourceCompile>
         <skipTestCompile>false</skipTestCompile>
-        
+
         <docker.image.prefix>repository/crosslake-docker</docker.image.prefix>
     </properties>
 
@@ -100,8 +100,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <!-- Spring Boot Actuator displays build-related information
-                        if a META-INF/build-info.properties file is present -->
                         <goals>
                             <goal>build-info</goal>
                         </goals>
@@ -239,7 +237,7 @@
             </plugin>
         </plugins>
     </build>
-   
+
     <reporting>
         <plugins>
             <plugin>
@@ -312,21 +310,21 @@
             </plugin>
         </plugins>
     </reporting>
-    
+
     <distributionManagement>
         <repository>
             <id>nexus</id>
             <name>Crosslake Releases</name>
             <url>${artifact.repo.protocol}://${artifact.repo.host}:${artifact.repo.port}/repository/crosslake-releases/</url>
         </repository>
-        
+
         <snapshotRepository>
             <uniqueVersion>false</uniqueVersion>
             <id>nexus</id>
             <name>Crosslake Snapshots</name>
             <url>${artifact.repo.protocol}://${artifact.repo.host}:${artifact.repo.port}/repository/crosslake-snapshots/</url>
         </snapshotRepository>
-        
+
         <site>
             <id>nexus</id>
             <name>Site</name>
