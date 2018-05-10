@@ -54,8 +54,10 @@
         <jacoco.version>0.8.1</jacoco.version>
         <dependency.locations.enabled>false</dependency.locations.enabled>
         
+        <jacoco.dataFile>${project.build.directory}/jacoco.exec</jacoco.dataFile>
+        
         <!-- Sonar -->
-        <sonar.jacoco.reportPaths>${project.build.directory}/jacoco.exec</sonar.jacoco.reportPaths>
+        <sonar.jacoco.reportPaths>${jacoco.dataFile}</sonar.jacoco.reportPaths>
         <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
         
         <artifact.repo.protocol>http</artifact.repo.protocol>
