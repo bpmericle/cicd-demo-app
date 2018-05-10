@@ -140,6 +140,9 @@ pipeline {
         success {
             executePostPipelineSuccessSteps()
         }
+        aborted {
+            executePostPipelineAbortedSteps()
+        }
         failure {
             executePostPipelineFailureSteps()
         }
