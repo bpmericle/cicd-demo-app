@@ -13,7 +13,6 @@ spec:
       labels:
         app: @@ARTIFACT_ID@@
     spec:
-      restartPolicy: OnFailure
       containers:
       - name: @@ARTIFACT_ID@@
         image: @@IMAGE_TAG@@
